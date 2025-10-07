@@ -19,6 +19,14 @@ export default function QueryProcessor(query: string): string {
       result = Math.max(...numbers);
     } else if (query.toLowerCase().includes("smallest")) {
       result = Math.min(...numbers);
+    } else if (query.includes("plus")) {
+      result = numbers[0] + numbers[1];
+    } else if (query.includes("minus")) {
+      result = numbers[0] - numbers[1];
+    } else if (query.includes("times")) {
+      result = numbers[0] * numbers[1];
+    } else if (query.includes("divided by")) {
+      result = numbers[0] / numbers[1];
     }
 
     return result.toString();
