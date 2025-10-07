@@ -11,8 +11,17 @@ export default function QueryProcessor(query: string): string {
     return "Martin Jimenez";
   }
 
-  if (query.toLowerCase().includes("andrew id")) {
-    return "martinji";
+  if (query.toLowerCase().includes("largest") || query.toLowerCase().includes("smallest")) {
+    const numbers = query.match(/\d+/g)?.map(Number) || [];
+    let result = 0;
+
+    if (query.toLowerCase().includes("largest")) {
+      result = Math.max(...numbers);
+    } else if (query.toLowerCase().includes("smallest")) {
+      result = Math.min(...numbers);
+    }
+
+    return result.toString();
   }
 
   return "";
