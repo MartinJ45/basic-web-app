@@ -17,15 +17,27 @@ export default function QueryProcessor(query: string): string {
 
     if (query.toLowerCase().includes("largest")) {
       result = Math.max(...numbers);
-    } else if (query.toLowerCase().includes("smallest")) {
-      result = Math.min(...numbers);
-    } else if (query.includes("plus")) {
+    }
+
+    return result.toString();
+  }
+
+  if (
+    query.toLowerCase().includes("plus") ||
+    query.toLowerCase().includes("minus") ||
+    query.toLowerCase().includes("times") ||
+    query.toLowerCase().includes("divided by")
+  ) {
+    const numbers = query.match(/\d+/g)?.map(Number) || [];
+    let result = 0;
+
+    if (query.toLowerCase().includes("plus")) {
       result = numbers[0] + numbers[1];
-    } else if (query.includes("minus")) {
+    } else if (query.toLowerCase().includes("minus")) {
       result = numbers[0] - numbers[1];
-    } else if (query.includes("times")) {
+    } else if (query.toLowerCase().includes("times")) {
       result = numbers[0] * numbers[1];
-    } else if (query.includes("divided by")) {
+    } else if (query.toLowerCase().includes("divided by")) {
       result = numbers[0] / numbers[1];
     }
 
